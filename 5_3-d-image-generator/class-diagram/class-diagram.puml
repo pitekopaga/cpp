@@ -1,0 +1,129 @@
+@startuml
+title 3D Image Generator - Class Diagram
+
+' Core 3D Mathematics
+class Vector3D {
+  - double x
+  - double y
+  - double z
+  + Vector3D(x: double, y: double, z: double)
+  + length(): double
+  + normalize(): Vector3D
+  + dot(other: Vector3D): double
+  + cross(other: Vector3D): Vector3D
+  + operator+(other: Vector3D): Vector3D
+  + operator*(scalar: double): Vector3D
+}
+
+class Matrix4x4 {
+  - double data[4][4]
+  + Matrix4x4()
+  + translate(x: double, y: double, z: double): void
+  + rotate(angle: double, axis: Vector3D): void
+  + scale(x: double, y: double, z: double): void
+  + operator*(other: Matrix4x4): Matrix4x4
+  + transform(point: Vector3D): Vector3D
+}
+
+' Geometry Classes
+class Vertex {
+  - position: Vector3D
+  - normal: Vector3D
+  - texCoord: Vector2D
+}
+
+class Triangle {
+  - vertices[3]: Vertex*
+  - normal: Vector3D
+  + calculateNormal(): void
+  + getArea(): double
+}
+
+class Mesh {
+  - vertices: vector<Vertex>
+  - triangles: vector<Triangle>
+  - name: string
+  + addVertex(vertex: Vertex): void
+  + addTriangle(v1: Vertex*, v2: Vertex*, v3: Vertex*): void
+  + calculateNormals(): void
+  + applyTransformation(matrix: Matrix4x4): void
+  + getVertexCount(): size_t
+  + getTriangleCount(): size_t
+}
+
+' Rendering System
+interface Renderable {
+  + render(): void
+  + getBoundingBox(): BoundingBox
+}
+
+class Camera {
+  - position: Vector3D
+  - target: Vector3D
+  - up: Vector3D
+  - fov: double
+  - aspectRatio: double
+  + lookAt(target: Vector3D): void
+  + getViewMatrix(): Matrix4x4
+  + getProjectionMatrix(): Matrix4x4
+}
+
+class Light {
+  # intensity: double
+  # color: Color
+  + getIntensity(): double
+  + getColor(): Color
+  + getDirection(position: Vector3D): Vector3D
+}
+
+class PointLight extends Light {
+  - position: Vector3D
+  + getDirection(position: Vector3D): Vector3D
+}
+
+class DirectionalLight extends Light {
+  - direction: Vector3D
+  + getDirection(position: Vector3D): Vector3D
+}
+
+' Main Generator Class
+class ImageGenerator3D {
+  - scene: Scene
+  - camera: Camera
+  - renderer: Renderer
+  - width: int
+  - height: int
+  + initialize(width: int, height: int): bool
+  + loadScene(configFile: string): bool
+  + addMesh(mesh: Mesh*): void
+  + addLight(light: Light*): void
+  + setCamera(camera: Camera): void
+  + render(): Image
+  + saveImage(filename: string): bool
+}
+
+class Scene {
+  - meshes: vector<Mesh*>
+  - lights: vector<Light*>
+  - backgroundColor: Color
+  + addMesh(mesh: Mesh*): void
+  + addLight(light: Light*): void
+  + removeMesh(mesh: Mesh*): void
+  + getMeshes(): vector<Mesh*>
+  + getLights(): vector<Light*>
+}
+
+' Relationships
+Mesh "1" *-- "*" Vertex : contains
+Mesh "1" *-- "*" Triangle : contains
+Triangle "1" -- "3" Vertex : references
+
+ImageGenerator3D "1" -- "1" Scene : manages
+ImageGenerator3D "1" -- "1" Camera : uses
+ImageGenerator3D "1" -- "1" Renderer : uses
+
+Scene "1" *-- "*" Mesh : contains
+Scene "1" *-- "*" Light : contains
+
+Mesh ..|> Renderable
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+title System Architecture - Component Diagram
+
+package "3D Image Generator" {
+  [Input Parser] as Parser
+  [Geometry Processor] as Geometry
+  [Rendering Engine] as Renderer
+  [Output Generator] as Output
+  
+  database "Data Models" as Data {
+    [Point Cloud]
+    [Mesh Data]
+    [Scene Graph]
+  }
+}
+
+package "External Libraries" {
+  [OpenGL] as GL
+  [GLFW] as GLFW
+  [GLM] as GLM
+  [stb_image] as STB
+}
+
+[User] --> Parser : Input files/config
+Parser --> Data : Store parsed data
+Geometry --> Data : Read/process data
+Renderer --> Data : Access scene data
+Renderer --> GL : Rendering calls
+Renderer --> GLM : Math operations
+Output --> STB : Image encoding
+Renderer --> Output : Raw pixel data
+Output --> [User] : Image files
+
+note right of Parser
+  Supports:
+  - JSON config
+  - OBJ/STL models
+  - CSV point clouds
+  - Text descriptions
+end note
+
+note right of Renderer
+  Implements:
+  - Transform pipeline
+  - Lighting calculations
+  - Material application
+  - Post-processing
+end note
+@enduml

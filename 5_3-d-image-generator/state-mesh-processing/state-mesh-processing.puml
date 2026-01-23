@@ -1,0 +1,41 @@
+@startuml
+title Mesh Processing State Diagram
+
+[*] --> Idle
+
+state Idle {
+  [*] --> WaitingForInput
+  WaitingForInput --> Parsing : load file
+  Parsing --> Validating : parse complete
+  Validating --> Ready : validation passed
+  Validating --> Error : validation failed
+  Ready --> [*]
+  Error --> [*]
+}
+
+Idle --> Processing : process command
+Processing --> Transforming : apply transforms
+Transforming --> CalculatingNormals : transforms applied
+CalculatingNormals --> RenderingReady : normals calculated
+RenderingReady --> [*] : rendering complete
+
+state Error {
+  [*] --> LoggingError
+  LoggingError --> RecoveryAttempt
+  RecoveryAttempt --> Idle : recovery successful
+  RecoveryAttempt --> [*] : recovery failed
+}
+
+note right of Idle
+  Mesh can be in idle state
+  waiting for user input
+  or processing commands
+end note
+
+note right of Processing
+  Processing includes:
+  - Vertex manipulation
+  - Triangle optimization
+  - UV coordinate generation
+end note
+@enduml

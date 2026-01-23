@@ -1,0 +1,38 @@
+@startuml
+title System Use Cases
+
+left to right direction
+actor "Developer" as Dev
+actor "End User" as User
+actor "Researcher" as Researcher
+
+rectangle "3D Image Generator System" {
+  usecase "Generate 3D from Text" as UC1
+  usecase "Import 3D Models" as UC2
+  usecase "Apply Transformations" as UC3
+  usecase "Configure Lighting" as UC4
+  usecase "Render to Image" as UC5
+  usecase "Export 3D Model" as UC6
+  usecase "Visualize Point Cloud" as UC7
+  usecase "Batch Processing" as UC8
+  usecase "API Integration" as UC9
+}
+
+Dev --> UC2
+Dev --> UC3
+Dev --> UC4
+Dev --> UC9
+
+User --> UC1
+User --> UC5
+User --> UC6
+
+Researcher --> UC7
+Researcher --> UC8
+Researcher --> UC5
+
+UC5 .> UC1 : extends
+UC5 .> UC2 : extends
+UC5 .> UC3 : extends
+UC5 .> UC4 : extends
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+title Rendering Pipeline - Sequence Diagram
+
+actor User
+participant "ImageGenerator3D" as Generator
+participant "Scene" as Scene
+participant "Renderer" as Renderer
+participant "Camera" as Camera
+participant "Mesh" as Mesh
+participant "Light" as Light
+
+User -> Generator: initialize(1024, 768)
+Generator -> Generator: setup rendering context
+Generator --> User: true
+
+User -> Generator: loadScene("config.json")
+Generator -> Scene: loadFromFile("config.json")
+Scene -> Scene: parse meshes and lights
+Scene -> Mesh: loadFromFile()
+Scene -> Light: createFromConfig()
+Scene --> Generator: Scene object
+
+User -> Generator: addMesh(customMesh)
+Generator -> Scene: addMesh(customMesh)
+Scene --> Generator: success
+
+User -> Generator: setCamera(cameraParams)
+Generator -> Camera: configure(cameraParams)
+Camera --> Generator: configured Camera
+
+User -> Generator: render()
+Generator -> Renderer: beginFrame()
+Renderer -> Scene: getMeshes()
+Scene --> Renderer: mesh list
+Renderer -> Scene: getLights()
+Scene --> Renderer: light list
+
+loop For each mesh
+  Renderer -> Mesh: getVertices()
+  Mesh --> Renderer: vertex data
+  Renderer -> Renderer: transform vertices
+  Renderer -> Renderer: apply lighting
+end
+
+Renderer -> Camera: getViewMatrix()
+Camera --> Renderer: view matrix
+Renderer -> Camera: getProjectionMatrix()
+Camera --> Renderer: projection matrix
+Renderer -> Renderer: final composition
+Renderer --> Generator: Image object
+Generator --> User: rendered Image
+
+User -> Generator: saveImage("output.png")
+Generator -> Generator: encode PNG
+Generator --> User: true
+@enduml
