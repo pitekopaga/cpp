@@ -5,23 +5,23 @@ A C++ application for generating and manipulating 3D images, featuring comprehen
 ## 📊 UML Design Documentation
 
 ### **Class Diagram**
-![Class Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/class-diagram/class-diagram.png)
 *Static structure showing classes and relationships*
+![Class Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/class-diagram/class-diagram.png)
 
 ### **Rendering Pipeline Sequence**
-![Sequence Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/component-diagram/component-diagram.png)
 *Dynamic behavior of the rendering process*
+![Sequence Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/component-diagram/component-diagram.png)
 
 ### **System Architecture**
-![Component Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/sequence-render/sequence-render.png)
 *Component interactions and external dependencies*
+![Component Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/sequence-render/sequence-render.png)
 
 ### **User Interactions**
-![Use Case Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/use-case-diagram/use-case-diagram.png)
 *System capabilities by user role*
+![Use Case Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/use-case-diagram/use-case-diagram.png)
 
 ### **Mesh Processing States**
-![State Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/state-mesh-processing/state-mesh-processing.png)
 *Lifecycle of mesh processing operations*
+![State Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/state-mesh-processing/state-mesh-processing.png)
 
 ## 🏗️ Project Structure
