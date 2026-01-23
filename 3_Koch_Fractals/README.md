@@ -1,5 +1,6 @@
-Example Output:
-![Example Output] (https://github.com/pitekopaga/cpp/blob/main/3_Koch_Fractals/output.pdf)
+### **Example Output**
+![Example Output](https://github.com/pitekopaga/cpp/blob/main/3_Koch_Fractals/output.pdf)
+
 Compilation Instructions
 The program requires a C++ compiler (such as g++) and the C++ standard library.
 
