@@ -5,23 +5,23 @@ A C++ application for generating and manipulating 3D images, featuring comprehen
 ## 📊 UML Design Documentation
 
 ### **Class Diagram**
-![Class Diagram](docs/class-diagram.png)
+![Class Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/class-diagram/class-diagram.png)
 *Static structure showing classes and relationships*
 
 ### **Rendering Pipeline Sequence**
-![Sequence Diagram](docs/sequence-render.png)
+![Sequence Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/component-diagram/component-diagram.png)
 *Dynamic behavior of the rendering process*
 
 ### **System Architecture**
-![Component Diagram](docs/component-diagram.png)
+![Component Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/sequence-render/sequence-render.png)
 *Component interactions and external dependencies*
 
 ### **User Interactions**
-![Use Case Diagram](docs/use-case-diagram.png)
+![Use Case Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/use-case-diagram/use-case-diagram.png)
 *System capabilities by user role*
 
 ### **Mesh Processing States**
-![State Diagram](docs/state-mesh-processing.png)
+![State Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/state-mesh-processing/state-mesh-processing.png)
 *Lifecycle of mesh processing operations*
 
 ## 🏗️ Project Structure
