@@ -1,4 +1,3 @@
-### **Example Output**
 ![Example Output](https://github.com/pitekopaga/cpp/blob/main/3_Koch_Fractals/output.pdf)
 
 Compilation Instructions
