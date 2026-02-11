@@ -6,15 +6,15 @@ A C++ application for generating and manipulating 3D images, featuring comprehen
 
 ### **Class Diagram**
 *Static structure showing classes and relationships*
-![Class Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/class-diagram/class-diagram.png)
+![Class Diagram](https://github.com/pitekopaga/cpp/blob/main/05_3-d-image-generator/class-diagram/class-diagram.png)
 
 ### **Rendering Pipeline Sequence**
 *Dynamic behavior of the rendering process*
-![Sequence Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/component-diagram/component-diagram.png)
+![Sequence Diagram](https://github.com/pitekopaga/cpp/blob/main/05_3-d-image-generator/component-diagram/component-diagram.png)
 
 ### **System Architecture**
 *Component interactions and external dependencies*
-![Component Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/sequence-render/sequence-render.png)
+![Component Diagram](https://github.com/pitekopaga/cpp/blob/main/05_3-d-image-generator/sequence-render/sequence-render.png)
 
 ### **User Interactions**
 *System capabilities by user role*
@@ -22,6 +22,6 @@ A C++ application for generating and manipulating 3D images, featuring comprehen
 
 ### **Mesh Processing States**
 *Lifecycle of mesh processing operations*
-![State Diagram](https://github.com/pitekopaga/cpp/blob/main/5_3-d-image-generator/state-mesh-processing/state-mesh-processing.png)
+![State Diagram](https://github.com/pitekopaga/cpp/blob/main/05_3-d-image-generator/use-case-diagram/use-case-diagram.png)
 
 ## 🏗️ Project Structure
